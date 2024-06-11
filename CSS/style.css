@@ -1,0 +1,157 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+  pointer-events: none;
+}
+
+header, main {
+  z-index: 2;
+  position: relative;
+}
+
+.start {
+  width: 250px; 
+  height: 125px; 
+  background-image: url('https://i.pinimg.com/originals/83/55/dd/8355ddb56fcf53e576a98e01b33c7635.png'); /* Устанавливаем изображение в качестве фона */
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-color: transparent; 
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+  outline: none; 
+  position: absolute;
+  top: 150px;
+}
+
+.main {
+  position: relative; 
+  top: 20px; 
+}
+
+.start:hover {
+  background-color: rgba(255, 255, 255, 0.05); 
+}
+
+
+.start:active {
+  background-color: rgba(255, 255, 255, 0.2); 
+}
+
+
+
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #61aab5f5;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+#result-display {
+  min-height: 20px;
+}
+
+h1 {
+  font-size: 5em;
+  font-weight: bold;
+  font-family: "Audiowide", sans-serif;
+  font-style: normal;
+  color: #6fa0a7f5; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 180px; 
+  height: 180px; 
+  border-radius: 16px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem; 
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  outline: none;
+  margin-top: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 180px); 
+  justify-content: center; 
+  align-items: center;
+  width: 90vw;
+  max-width: 1200px;
+  padding: 0 5px;
+  margin-top: 20px;
+}
+
+
+
+
+
+.card:hover {
+  background-color: #bbff55;
+}
+
+/* Медиа-запросы для различных размеров экранов */
+@media (max-width: 768px) {
+  .card {
+      width: 30vw; /* Изменяем ширину карточек для небольших экранов */
+      height: 30vw; /* Высота равна ширине для сохранения пропорций */
+      font-size: 1.5rem; /* Изменяем размер шрифта */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+      width: 40vw; /* Изменяем ширину карточек для очень небольших экранов */
+      height: 40vw; /* Высота равна ширине для сохранения пропорций */
+      font-size: 1rem; /* Изменяем размер шрифта */
+  }
+}
