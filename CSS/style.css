@@ -1,22 +1,17 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  min-height: 100%;
 }
 
 .video-background {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  z-index: -1;
 }
 
 .video-background iframe {
@@ -25,60 +20,92 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+   pointer-events: none; /* no clicable video on youtube */
 }
 
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: 1;
-  pointer-events: none;
-}
+
 
 header, main {
-  z-index: 2;
   position: relative;
 }
 
-.start {
-  width: 250px; 
-  height: 125px; 
-  background-image: url('https://i.pinimg.com/originals/83/55/dd/8355ddb56fcf53e576a98e01b33c7635.png'); /* Устанавливаем изображение в качестве фона */
+.start, .stop {
+  width: 234px; 
+  height: 58px; 
   background-size: cover; 
-  background-repeat: no-repeat; 
   background-color: transparent; 
   border: none; 
   cursor: pointer; 
-  transition: background-color 0.3s; 
-  outline: none; 
-  position: absolute;
-  top: 150px;
+  border-radius: 20px;
+  position: absolute;  /* any place for buttons */
+  top: 199px;
+  left: 343px; 
+}
+
+.start {
+  background-image: url('https://i.imgur.com/TfggW6V.jpeg'); 
+}
+
+.stop {
+  background-image: url('https://i.imgur.com/N05wlxw.jpeg'); 
 }
 
 .main {
-  position: relative; 
+  position: relative; /* moved it from the top */
   top: 20px; 
 }
 
-.start:hover {
-  background-color: rgba(255, 255, 255, 0.05); 
+.start:active, .stop:active {
+  transform: scale(.88);
 }
 
-
-.start:active {
-  background-color: rgba(255, 255, 255, 0.2); 
+.full-card {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  margin: 10px; 
+  flex-basis: calc(25% - 20px); 
 }
 
+.front-card, .card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; 
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em; 
+  cursor: pointer;
+  transform-style: preserve-3d; /* transform 3D */
+  transition: transform 0.6s; 
+}
 
+.front-card {
+  background-image: url('https://i.imgur.com/AGFLpuC.jpeg');
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+}
 
+.card {
+  background-color: Lime;
+  border: 3px solid Navy;
+  transform: rotateY(180deg);
+}
+
+.full-card.flip .front-card {
+  transform: rotateY(180deg);
+}
+
+.full-card.flip .card {
+  transform: rotateY(0deg);
+}
 
 header {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* column to header */
   align-items: center;
   font-size: 1.2em;
   font-weight: bold;
@@ -97,61 +124,107 @@ h1 {
   font-family: "Audiowide", sans-serif;
   font-style: normal;
   color: #6fa0a7f5; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  letter-spacing: 2px;
-  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* can make column for different number of cards */
+  justify-content: center;
+  align-items: center;
+  max-width: 760px; 
+}
+
+.timer, .error-counter, .move-counter {
+  font-size: 2em;
+  color: #fff;
+  font-family: "Audiowide", sans-serif;
+  text-align: center;
+  min-width: 80px;
+  margin: 0 10px;
+}
+
+#timer-wrapper, #error-wrapper, #move-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+#time-label, #error-label, #move-label {
+  font-size: 2em;
+  color: #ffffff;
+  font-family: "Audiowide", sans-serif;
+  margin-right: 10px;
+}
+
+.game-status {
+  font-size: 2.5em;
+  color: #d0ff59;
+  font-family: "Audiowide", sans-serif;
   text-align: center;
   margin-top: 20px;
 }
 
-.card {
-  width: 180px; 
-  height: 180px; 
-  border-radius: 16px; 
+body {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem; 
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  outline: none;
-  margin-top: 20px;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(4, 180px); 
-  justify-content: center; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  width: 90vw;
-  max-width: 1200px;
-  padding: 0 5px;
-  margin-top: 20px;
 }
 
-
-
-
-
-.card:hover {
-  background-color: #bbff55;
+.rules {
+  width: 400px;
+  padding: 60px;
+  position: fixed;
+  top: 200px;
+  left: 0;
+  height: 100%;
+  font-family: "Audiowide", sans-serif;
+  font-size: 2.5em;
+  color: #848484;
 }
 
-/* Медиа-запросы для различных размеров экранов */
-@media (max-width: 768px) {
-  .card {
-      width: 30vw; /* Изменяем ширину карточек для небольших экранов */
-      height: 30vw; /* Высота равна ширине для сохранения пропорций */
-      font-size: 1.5rem; /* Изменяем размер шрифта */
+.rules h2 {
+  margin-top: 0;
+}
+
+.rules ul {
+  padding: 0;
+}
+
+.rules li {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1920px) {
+  .card, .full-card, .front-card {
+    width: 120px;
+    height: 120px;
+    top: -30px;
+    margin: 10px;
+    flex-basis: calc(20% - 15px);
+  }
+
+  .container {
+    max-width: 700px;
+  }
+
+  .start, .stop{
+    left: 200px;
+    top: 180px;
+  }
+  
+  h1 {
+    font-size: 4em;
+  }
+
+  .rules {
+    font-size: 1.7em;
   }
 }
 
-@media (max-width: 480px) {
-  .card {
-      width: 40vw; /* Изменяем ширину карточек для очень небольших экранов */
-      height: 40vw; /* Высота равна ширине для сохранения пропорций */
-      font-size: 1rem; /* Изменяем размер шрифта */
-  }
-}
+
+

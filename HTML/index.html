@@ -4,48 +4,124 @@
 <head>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Danfo&family=Jacquard+12&family=Silkscreen:wght@400;700&display=swap');
-    </style>
+  </style>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Memory Game </title>
+  <title>Memory Game</title>
   <link rel="stylesheet" href="C:\programming\memory_game\CSS\style.css" />
   <script defer src="C:\programming\memory_game\javascript\app.js"></script>
 </head>
 
 <body>
+  <audio src='"C:\programming\memory_game\music\stranger-things-124008.mp3"' autoplay='autoplay' loop='loop' controls></audio>
   <div class="video-background">
-    <iframe src="https://www.youtube.com/embed/kPNQW5L9P_w?start=10&autoplay=1&mute=1&loop=1&playlist=kPNQW5L9P_w" 
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <div class="video-overlay"></div>
+    <iframe src="https://www.youtube.com/embed/kPNQW5L9P_w?start=10&autoplay=1&mute=1&loop=1&playlist=kPNQW5L9P_w"
+       allowfullscreen></iframe>
   </div>
 
   <header>
-    <h1>MEMORY GAME </h1>
+    <h1>MEMORY GAME</h1>
     <p id="result-display"></p>
-    <button id="start" class="start"></button>
+    <div class="buttons">
+      <button id="start" class="start"></button>
+      <button id="stop" class="stop" style="display:none;"></button>
+      <div id="timer-wrapper">
+        <span id="time-label">Time:</span>
+        <div id="timer" class="timer">60</div>
+      </div>
+      <div id="error-wrapper">
+        <span id="error-label">Errors:</span>
+        <div id="errorDisplay" class="error-counter">0</div>
+      </div>
+      <div id="move-wrapper">
+        <span id="move-label">Moves:</span>
+        <div id="moveDisplay" class="move-counter">0</div>
+      </div>
+    </div>
+    <div id="game-status" class="game-status"></div>
   </header>
+  
+  <div class="rules">
+    <h2>Game Rules</h2>
+    <ul>
+      <li>1.Click on a card to flip it.</li>
+      <li>2.Flip two cards to find a match.</li>
+      <li>3.If the cards match, they remain flipped.</li>
+      <li>4.If they don't match, they flip back.</li>
+      <li>5.The game starts when you flip the first card.</li>
+      <li>6.You win when all cards are matched.</li>
+      <li>7.The game ends when the timer runs out.</li>
+      <li>8.Click "Stop" to reset the game.</li>
+    </ul>
+  </div>
+
   <main>
     <div class="container">
-      <button id="rock" class="card">🪨</button>
-      <button id="paper" class="card">📄</button>
-      <button id="clown" class="card">🤡</button>
-      <button id="alien" class="card">👽</button>
-      <button id="robot" class="card">🤖</button>
-      <button id="heart" class="card">💗</button>
-      <button id="green_heart" class="card">💚</button>
-      <button id="boom" class="card">💥</button>
-      <button id="bomb" class="card">💣</button>
-      <button id="nails" class="card">💅</button>
-      <button id="brain" class="card">🧠</button>
-      <button id="eyes" class="card">👀</button>
-      <button id="policeman" class="card">👮</button>
-      <button id="bed" class="card">🛌</button>
-      <button id="bed" class="card">🕴</button>
-      <button id="bed" class="card">⛹</button>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="rock" class="card">🪨</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="paper" class="card">📄</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="clown" class="card">🤡</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="alien" class="card">📄</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="robot" class="card">💚</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="heart" class="card">🤡</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="green_heart" class="card">💚</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="boom" class="card">🪨</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="bomb" class="card">💣</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="nails" class="card">💅</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="brain" class="card">🧠</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="eyes" class="card">👀</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="policeman" class="card">💣</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="bed1" class="card">💅</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="bed2" class="card">👀</button>
+      </div>
+      <div class="full-card">
+        <button class="front-card"></button>
+        <button id="bed3" class="card">🧠</button>
+      </div>
     </div>
   </main>
-  
 </body>
 
 </html>
