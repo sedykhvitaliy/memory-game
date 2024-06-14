@@ -8,6 +8,10 @@ html, body {
   min-height: 100%;
 }
 
+audio {
+  display: none;
+}
+
 .video-background {
   position: fixed;
   top: 0;
@@ -38,7 +42,7 @@ header, main {
   border: none; 
   cursor: pointer; 
   border-radius: 20px;
-  position: absolute;  /* any place for buttons */
+  position: absolute;  /* Any place for buttons */
   top: 199px;
   left: 343px; 
 }
@@ -52,7 +56,7 @@ header, main {
 }
 
 .main {
-  position: relative; /* moved it from the top */
+  position: relative; /* Moved it from the top */
   top: 20px; 
 }
 
@@ -79,7 +83,7 @@ header, main {
   align-items: center;
   font-size: 3em; 
   cursor: pointer;
-  transform-style: preserve-3d; /* transform 3D */
+  transform-style: preserve-3d; /* Transform 3D */
   transition: transform 0.6s; 
 }
 
@@ -106,11 +110,11 @@ header, main {
 
 header {
   display: flex;
-  flex-direction: column; /* column to header */
+  flex-direction: column; /* Column to header */
   align-items: center;
   font-size: 1.2em;
   font-weight: bold;
-  color: #61aab5f5;
+  color: #01fec7f5;
   margin-bottom: 40px;
   text-align: center;
 }
@@ -124,13 +128,13 @@ h1 {
   font-weight: bold;
   font-family: "Audiowide", sans-serif;
   font-style: normal;
-  color: #6fa0a7f5; 
+  color: #01fec7f5; 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
 .container {
   display: flex;
-  flex-wrap: wrap; /* can make column for different number of cards */
+  flex-wrap: wrap; /* Can make column for different number of cards */
   justify-content: center;
   align-items: center;
   max-width: 760px; 
@@ -185,7 +189,7 @@ body {
   height: 100%;
   font-family: "Audiowide", sans-serif;
   font-size: 2.5em;
-  color: #000000;
+  color: #ffffff;
 }
 
 .rules h2 {
