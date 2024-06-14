@@ -1,6 +1,6 @@
 # Memory Game
 
-![Memory Game Screenshot](https://imgur.com/a/B9Gi1r7)
+![Memory Game Screenshot](https://i.imgur.com/f0GMAhR.png)
 
 ## Game Description
 
