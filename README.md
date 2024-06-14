@@ -8,7 +8,7 @@
 
 ## Getting Started
 
-You can play the game [here]().
+You can play the game [here](https://sedykhvitaliy.github.io/memory-game/).
 
 ### How to Play
 1. Click on a card to flip it.
